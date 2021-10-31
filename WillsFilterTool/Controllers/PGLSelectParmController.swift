@@ -176,7 +176,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
 //        imageController?.setGestureRecogniziers()
 //        if let myView = imageController?.view
 //            { // could be navigation issue
-//            //MARK: REFACTOR
+
 //            setGestureRecogniziers(targetView: myView) // matches viewDidDisappear removeGesture
 //        } else {
 //            // need to abort this loading... navigation issue -
@@ -190,7 +190,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
                     guard let self = self else { return } // a released object sometimes receives the notification
                                   // the guard is based upon the apple sample app 'Conference-Diffable'
 //                    NSLog("PGLSelectParmController  notificationBlock PGLCurrentFilterChange")
-                    self.updateDisplay()
+//                    self.updateDisplay()
                 }
         notifications.append(aNotification)
 
@@ -238,7 +238,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
         notifications.append(aNotification)
 
         updateDisplay()
-        setChevronState()
+//        setChevronState()
 //         NSLog("PGLSelectParmController#viewWillAppear end ")
     }
 
@@ -247,7 +247,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillDisappear(_ animated: Bool) {
         // remove the parm views and the gesture recogniziers
 
-        //MARK: REFACTOR
+
         let deviceIdom = traitCollection.userInterfaceIdiom
         if deviceIdom == .pad {
 //            imageController?.removeGestureRecogniziers()
@@ -390,7 +390,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
 
 
 //    @objc func panAction(_ sender: UIPanGestureRecognizer) {
-//        //MARK: REFACTOR
+//        ""
 //        // moved to ImageController REMOVE this
 //
 //        // should enable only when a point parm is selected.
@@ -478,7 +478,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
     }
 
 //    func panEnded( endingPoint: CGPoint, parm: PGLFilterAttribute) {
-//        //MARK: REFACTOR
+//        ""
 //        // REMOVE
 //        // add move or resize mode logic
 //        // tap action should have set the rectController
@@ -501,7 +501,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
 //    }
     
 //    func panMoveChange( endingPoint: CGPoint, parm: PGLFilterAttribute) {
-//        //MARK: REFACTOR
+//        ""
 //        // add move or resize mode logic
 //        // delta logic - the startPoint is just the previous change method endingPoint
 //        // also note that startPoint is an instance var. should be parm also, like the ending point??
@@ -543,17 +543,17 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
 
     func imageViewParmControls() -> [String : UIView] {
         // answers dictionary indexed index by attributeName
-        //MARK: REFACTOR
+        ""
         return imageController?.parmControls ?? [String : UIView]()
     }
 
     func parmControl(named: String) -> UIView? {
-        //MARK: REFACTOR
+        ""
         return imageController?.parmControls[named]
     }
 
 //    func attributeValueChanged() {
-//        //MARK: REFACTOR
+//        ""
 //        // put the value of the tappedAttribute into the cell detail text
 //        // refactor comment - NOT used remove
 ////        if let displayCell = parmsTableView.cellForRow(at: selectedCellIndexPath!),
@@ -569,7 +569,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
 //
 //    }
     func highlight(viewNamed: String) {
-        //MARK: REFACTOR
+        ""
         // a switch statement might be cleaner
         // both UIImageView and UIControls need to be hidden or shown
         Logger(subsystem: LogSubsystem, category: LogCategory).notice("highlight viewNamed \(viewNamed)")
@@ -610,7 +610,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     @IBAction func parmSliderChange(_ sender: UISlider) {
-        //MARK: REFACTOR
+        ""
         // later move the logic of sliderValueDidChange to here..
 //        sliderValueDidChange(sender)
         // slider in the parmController tableView cell
@@ -639,7 +639,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     func colorSliderValueDidChange(_ sender: UISlider) {
-        //MARK: REFACTOR
+        ""
         // from the imageController sliderValueDidChange
         //        NSLog("PGLSelectParmController #sliderValueDidChange to \(sender.value)")
         let senderIndex: Int = Int(sender.tag)
@@ -654,7 +654,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
     }
 
     func sliderValueDidChange(_ sender: UISlider) {
-        //MARK: REFACTOR
+        ""
         // slider in the imageController on the image view
         if let target = tappedAttribute {
 //          NSLog("PGLSelectParmController #sliderValueDidChange target = \(target) value = \(sender.value)")
@@ -672,7 +672,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
     }
     // MARK:  UIFontPickerViewControllerDelegate
         func showFontPicker(_ sender: Any) {
-            //MARK: REFACTOR
+            ""
                 let fontConfig = UIFontPickerViewController.Configuration()
                 fontConfig.includeFaces = false
                 let fontPicker = UIFontPickerViewController(configuration: fontConfig)
@@ -681,7 +681,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
             }
 
     func fontPickerViewControllerDidPickFont(_ viewController: UIFontPickerViewController) {
-        //MARK: REFACTOR
+        ""
         if let target = tappedAttribute {
             if target.isFontUI() {
                 let theFont = viewController.selectedFontDescriptor
@@ -694,7 +694,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
 // MARK: UITextFieldDelegate
     // called from the textFields of the ImageController
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        //MARK: REFACTOR
+        ""
         // are there any senders of this?
 
         // input text from the imageController
@@ -713,7 +713,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
     // add listener for notification of text change
 
     func addTextChangeNotification(textAttributeName: String) {
-        //MARK: REFACTOR
+        ""
 //        NSLog("PGLSelectParmController addTextChangeNotification for \(textAttributeName)")
         let myCenter =  NotificationCenter.default
         let queue = OperationQueue.main
@@ -890,7 +890,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
 
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //MARK: REFACTOR
+        ""
         // moved to  PGLImageController -
         imageController?.panner?.isEnabled = false
 //         panner?.isEnabled = false // only enable pan gesture on certain cases
@@ -1119,7 +1119,7 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
   
 
 
-    // MARK: - Segue Navigation
+    // MARK: Navigation
     func isLimitedPhotoLibAccess() -> Bool {
         let accessLevel: PHAccessLevel = .readWrite // or .addOnly
         let authorizationStatus = PHPhotoLibrary.authorizationStatus(for: accessLevel)
@@ -1137,7 +1137,8 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
 //        NSLog("segue from \(segue.identifier)")
-
+        // comment does the refactoring that now sets the model objects make this section
+        // which sets the tappedAttribute now obsolete????
         if segue.identifier == "goToImageCollection" {
             guard let targetImageParm = sender as? PGLFilterAttributeImage
             else {return}
@@ -1174,17 +1175,29 @@ class PGLSelectParmController: UIViewController, UITableViewDelegate, UITableVie
         return // new
         }
 
-        if segue.identifier == "goToParentParmStack" {
-            if segue.destination is PGLSelectParmController { appStack.popToParentStack() }
-            postCurrentFilterChange()
-        }
-
-        if segue.identifier == "goToParentFilterStack" {
-            if segue.destination is PGLFilterTableController { appStack.popToParentStack() }
-            postCurrentFilterChange()
-        }
+//        if segue.identifier == "goToParentParmStack" {
+//            if segue.destination is PGLSelectParmController { appStack.popToParentStack() }
+//            postCurrentFilterChange()
+//        }
+//
+//        if segue.identifier == "goToParentFilterStack" {
+//            if segue.destination is PGLFilterTableController { appStack.popToParentStack() }
+//            postCurrentFilterChange()
+//        }
 
     }
+
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+         // not used in iPhone
+        // both parm & filter controllers are contained in the iPhone PGLColumnController cells
+
+        let deviceIdom = traitCollection.userInterfaceIdiom
+        if deviceIdom == .phone {
+            return false  }
+        else
+            { return true }
+    }
+
 
 
     // MARK: Pick Image

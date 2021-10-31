@@ -1,4 +1,12 @@
 /*
+    Created by Will
+    Modifications copyright 2021 Will Loew-Blosser
+
+    Modified from Apple Sample App
+    # Displaying Searchable Content by Using a Search Controller
+
+    Create a user interface with searchable content in a table view.
+
 	Copyright (C) 2017 Apple Inc. All Rights Reserved.
 	See LICENSE.txt for this sample’s licensing information
 	

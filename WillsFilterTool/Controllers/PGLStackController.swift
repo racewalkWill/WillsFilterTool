@@ -78,8 +78,11 @@ class PGLStackController: UITableViewController, UINavigationControllerDelegate 
         addToolBarButtons()
         updateNavigationBar()
         setLongPressGesture()
-        if appStack.outputStack.isEmptyStack() {
-            self.performSegue(withIdentifier: "showFilterController" , sender: nil)
+        let deviceIdom = traitCollection.userInterfaceIdiom
+        if deviceIdom != .phone{
+            if appStack.outputStack.isEmptyStack() {
+                self.performSegue(withIdentifier: "showFilterController" , sender: nil)
+            }
         }
     }
 
@@ -450,6 +453,23 @@ class PGLStackController: UITableViewController, UINavigationControllerDelegate 
 
     }
 
+    override func shouldPerformSegue(withIdentifier: String, sender: Any? ) -> Bool {
+        // both segues showParmSettings and showFilterController not used in iPhone
+        // both parm & filter controllers are contained in the iPhone PGLColumnController cells
+        let deviceIdom = traitCollection.userInterfaceIdiom
+
+        if deviceIdom == .phone {
+            return false
+        } else {
+            Logger(subsystem: LogSubsystem, category: LogCategory).notice("shouldPerformSegue \(withIdentifier)")
+             segueStarted = true
+            // don't open a popOverController seque is starting
+            return true
+        }
+
+
+    }
+
     // MARK: Swipe Actions
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -463,12 +483,7 @@ class PGLStackController: UITableViewController, UINavigationControllerDelegate 
          return UISwipeActionsConfiguration(actions: contextActions)
     }
 
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        Logger(subsystem: LogSubsystem, category: LogCategory).notice("shouldPerformSegue \(identifier)")
-         segueStarted = true
-        // don't open a popOverController seque is starting
-        return true
-    }
+
     func removeFilter(indexPath: IndexPath) {
 
         let cellIndent = appStack.cellFilters[indexPath.row]
@@ -578,14 +593,6 @@ class PGLStackController: UITableViewController, UINavigationControllerDelegate 
     }
     */
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

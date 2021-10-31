@@ -23,9 +23,13 @@ class PGLSplitViewController: UISplitViewController, NSFetchedResultsControllerD
             preferredDisplayMode = UISplitViewController.DisplayMode.twoOverSecondary }
         else {
             preferredDisplayMode = UISplitViewController.DisplayMode.oneBesideSecondary }
+
         let deviceIdom = traitCollection.userInterfaceIdiom
         if deviceIdom == .phone
-            { preferredSplitBehavior = UISplitViewController.SplitBehavior.displace }
+            {preferredDisplayMode = UISplitViewController.DisplayMode.oneBesideSecondary
+            preferredSplitBehavior = UISplitViewController.SplitBehavior.displace
+            setViewController(PGLColumnController(), for: .supplementary)
+        }
 //        else
 //            { preferredSplitBehavior = UISplitViewController.SplitBehavior.automatic }
 

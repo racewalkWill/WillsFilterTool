@@ -120,6 +120,20 @@ class PGLOpenStackViewController: UIViewController , UITableViewDelegate, UITabl
         }
     }
 
+// MARK: Navigation
+    override func shouldPerformSegue(withIdentifier: String, sender: Any? ) -> Bool {
+        // both segues showParmSettings and showFilterController not used in iPhone
+        // both parm & filter controllers are contained in the iPhone PGLColumnController cells
+        let deviceIdom = traitCollection.userInterfaceIdiom
+
+        if deviceIdom == .phone
+            && (withIdentifier == "compactOpenToStackView") {
+                return false }
+         else {
+             return true  }
+
+
+    }
 
 
 

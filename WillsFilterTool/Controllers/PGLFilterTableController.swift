@@ -208,16 +208,6 @@ func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewCon
         }
     }
 
-   override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-    if let theCell =  sender as? UITableViewCell {
-        return theCell.isSelected
-            // if the cell is not selected then don't go to parms..
-            // this means there is no current filter
-    } else
-        { return false }
-    }
-
-
     func updateFilterLabel()  {
         // some overlap with the configureCell...
         if stackData() != nil {
@@ -232,6 +222,27 @@ func targetDisplayModeForAction(in svc: UISplitViewController) -> UISplitViewCon
 //        else { filterNumberLabel.text =  "No Filter" }
 
 }
+
+// MARK: Navigation
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+         // not used in iPhone
+            // both parm & filter controllers are contained in the iPhone PGLColumnController cells
+
+        let deviceIdom = traitCollection.userInterfaceIdiom
+        if deviceIdom == .phone {
+            return false
+        }
+
+         if let theCell =  sender as? UITableViewCell {
+             return theCell.isSelected
+                 // if the cell is not selected then don't go to parms..
+                 // this means there is no current filter
+         } else
+             { return false }
+    }
+
+
+
 
 
     /*
