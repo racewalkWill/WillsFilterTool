@@ -1185,7 +1185,7 @@
          contextName = "PGLSelectParmController.viewWillDisappear(_:):PGLSelectParmController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "splitViewController">
+               value = "splitViewController.isCollapsed">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
